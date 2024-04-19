@@ -1,0 +1,36 @@
+{
+  "name": "wsd/brightsign-api",
+  "description": "A PHP API to connect to a BrightSign server.",
+  "keywords": [
+    "brightsign",
+    "api",
+    "composer",
+    "package"
+  ],
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Jesper Skytte Marcussen",
+      "email": "jsm@westsoftdevelopment.dk"
+    }
+  ],
+  "type": "project",
+  "require": {
+    "php": ">=5.6",
+    "symfony/console": "^4.0",
+    "symfony/filesystem": "^4.0",
+    "symfony/finder": "^4.0"
+  },
+  "require-dev": {
+    "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WSD\\BrightSignApi\\": "src/"
+    }
+  },
+  "bin": [
+    "console"
+  ]
+}

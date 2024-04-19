@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+
+<?php
+
+// Detect source location
+$autoload = [
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/vendor/autoload.php'
+];
+$loaded = false;
+
+for ($i = 0; $i < count($autoload); $i++) {
+    if (file_exists($autoload[$i])) {
+        require $autoload[$i];
+        $loaded = true;
+        break;
+    }
+}
+
+if (!$loaded) {
+    die(
+        'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+        'wget http://getcomposer.org/composer.phar' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+}
+
+use Symfony\Component\Console\Application;
+use WSD\BrightSignApi\Util\GenerateCommand;
+use WSD\BrightSignApi\Util\TestCommand;
+
+$app = new Application();
+$app->add(new GenerateCommand('Generate', ['dir' => __DIR__]));
+$app->add(new TestCommand());
+$app->run();
